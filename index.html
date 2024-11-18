@@ -1,15 +1,77 @@
-<html>
-    <h1>
-        Hey, I'm NetworkChuck
-    </h1>
-    <body>
-        <h2>About me</h2>
-        <p>
-            I am a coffee addict who makes vidoes sometimes.
-        </p>
-        <h2>What I'm working on</h2>
-        <p>
-            I'm obsessed with AI right now and I'm working on the CPTS from HTB.
-        </p>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website mit Reitern</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            display: flex;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            margin-right: 5px;
+        }
+        .tab:hover {
+            background-color: #ddd;
+        }
+        .tab.active {
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .tab-content {
+            display: none;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function openTab(event, tabName) {
+            // Tabs deaktivieren
+            const tabs = document.querySelectorAll(".tab");
+            tabs.forEach(tab => tab.classList.remove("active"));
+
+            // Inhalte deaktivieren
+            const contents = document.querySelectorAll(".tab-content");
+            contents.forEach(content => content.classList.remove("active"));
+
+            // Aktiven Tab und Inhalt aktivieren
+            event.currentTarget.classList.add("active");
+            document.getElementById(tabName).classList.add("active");
+        }
+    </script>
+</head>
+<body>
+    <h1>Hey, I'm NetworkChuck</h1>
+    
+    <!-- Reiter -->
+    <div style="display: flex;">
+        <div class="tab active" onclick="openTab(event, 'about')">About Me</div>
+        <div class="tab" onclick="openTab(event, 'work')">What I'm Working On</div>
+        <div class="tab" onclick="openTab(event, 'contact')">Contact</div>
+    </div>
+
+    <!-- Inhalte -->
+    <div id="about" class="tab-content active">
+        <h2>About Me</h2>
+        <p>I am a coffee addict who makes videos sometimes.</p>
+    </div>
+    <div id="work" class="tab-content">
+        <h2>What I'm Working On</h2>
+        <p>I'm obsessed with AI right now and I'm working on the CPTS from HTB.</p>
+    </div>
+    <div id="contact" class="tab-content">
+        <h2>Contact</h2>
+        <p>You can reach me at <a href="mailto:networkchuck@example.com">networkchuck@example.com</a>.</p>
+    </div>
+</body>
 </html>
